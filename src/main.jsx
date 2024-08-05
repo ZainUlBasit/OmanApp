@@ -13,7 +13,7 @@ import AllRecords from "./Pages/Records/AllRecords";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Home />,
   },
   {
     path: "/home",
