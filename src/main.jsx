@@ -9,11 +9,17 @@ import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Records from "./Pages/Records/Records";
 import AllRecords from "./Pages/Records/AllRecords";
+import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+import Login from "./Pages/Login/Login";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "/record/:id",
@@ -30,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/all-records",
     element: <AllRecords />,
+  },
+  {
+    path: "/change-password",
+    element: <ChangePassword />,
   },
 ]);
 

@@ -42,7 +42,14 @@ const Navbar = () => {
           VIEW SITE
         </div>
         /
-        <div className="cursor-pointer whitespace-nowrap">CHANGE PASSWORD </div>
+        <div
+          className="cursor-pointer whitespace-nowrap"
+          onClick={() => {
+            navigate("/change-password");
+          }}
+        >
+          CHANGE PASSWORD{" "}
+        </div>
         / <div className="cursor-pointer whitespace-nowrap">LOG OUT</div>
       </div>
     </StyledContainer>

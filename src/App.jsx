@@ -109,7 +109,7 @@ function App() {
           />
         </div>
         <div className="border-2 border-[red] px-4 flex items-center justify-between flex-col h-full w-[30%] rounded-lg rightside gap-y-10 py-8">
-          <div className="">
+          <div className="flex flex-col justify-center">
             <QrCode />
 
             <div className="">

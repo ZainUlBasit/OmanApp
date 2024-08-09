@@ -22,7 +22,7 @@ const StyledContainerA = styled.div`
   }
 `;
 
-const CustomInput = ({ label, placeholder }) => {
+const CustomInput = ({ label, placeholder, type }) => {
   const [value, setValue] = useState("");
 
   return (
@@ -30,7 +30,7 @@ const CustomInput = ({ label, placeholder }) => {
       <div className="w-[200px] CustomLabel">{label}:</div>
       <input
         placeholder={placeholder}
-        type="text"
+        type={type ? type : "text"}
         className="w-[280px] px-3 py-2 rounded-md border-2 border-gray-600 bg-[#121212] text-white placeholder:text-gray-600 CustomInput"
         value={value}
         onChange={(e) => setValue(e.target.value)}
