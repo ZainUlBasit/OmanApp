@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Card from "./Components/Cards/Card";
 import styled from "styled-components";
+import QrCode from "./Components/QrCode/QrCode";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -108,6 +109,13 @@ function App() {
           />
         </div>
         <div className="border-2 border-[red] px-4 flex items-center justify-between flex-col h-full w-[30%] rounded-lg rightside gap-y-10 py-8">
+          <div className="">
+            <QrCode />
+
+            <div className="">
+              <div className="">Scan Me</div>
+            </div>
+          </div>
           <div className="flex items-center flex-col gap-y-1">
             <div className="text-3xl">عبدالكلام</div>
             <div className="text-xl">ABDUL KALAM</div>

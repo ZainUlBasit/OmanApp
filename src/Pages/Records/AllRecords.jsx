@@ -4,6 +4,7 @@ import TableComp from "../../Components/Table/TableComponent";
 import { RecordColumns } from "../../assets/Columns/RecordColumns";
 import { IoMdAdd } from "react-icons/io";
 import { AllRecordColumns } from "../../assets/Columns/AllRecordColumns";
+import QrCode from "../../Components/QrCode/QrCode";
 
 const AllRecords = () => {
   return (
@@ -40,6 +41,9 @@ const AllRecords = () => {
             rows={[{}, {}]}
             title={"All Records Information"}
           />
+          <div className="">
+            <QrCode />
+          </div>
         </div>
       </div>
     </div>
