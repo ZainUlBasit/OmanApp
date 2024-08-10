@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import { IoMdAdd } from "react-icons/io";
 import styled from "styled-components";
 import CustomSelect from "../Input/CustomSelect";
+import { AddUserAPI } from "../../Api_Requests/Api_Requests";
 
 const StyledContainer = styled.div`
   min-height: 100vh;
@@ -30,7 +31,33 @@ const AddRecordForm = () => {
   const [MedicalValidity, setMedicalValidity] = useState("");
   const [To, setTo] = useState("");
   const [MedicalCenter, setMedicalCenter] = useState("");
-  const [QrCode, setQrCode] = useState(null);
+  const [Loading, setLoading] = useState(false);
+  const onSubmit = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    const payload = {
+      registration_type: Reg_type,
+      registration_number: Reg_no,
+      name: Name,
+      arabic_name: ArabicName,
+      dob: DOB,
+      nationality: Nationality,
+      gender: Sex,
+      passport_number: PassportNo,
+      civil_id: CivilId,
+      category: Category,
+      medical_validity: MedicalValidity,
+      to: To,
+      medical_center: MedicalCenter,
+    };
+    try {
+      const response = await AddUserAPI(payload);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+    setLoading(false);
+  };
 
   return (
     <StyledContainer>
@@ -89,13 +116,14 @@ const AddRecordForm = () => {
                 placeholder={"Enter Name"}
               />
             </div>
-            <div className="border-b-[1px] border-b-gray-800 py-3"></div>
-            <CustomInput
-              label={"Arabic Name"}
-              value={ArabicName}
-              setValue={setArabicName}
-              placeholder={"Enter Arabic Name"}
-            />
+            <div className="border-b-[1px] border-b-gray-800 py-3">
+              <CustomInput
+                label={"Arabic Name"}
+                value={ArabicName}
+                setValue={setArabicName}
+                placeholder={"Enter Arabic Name"}
+              />
+            </div>
           </div>
           <div className="border-b-[1px] border-b-gray-800 py-3">
             <CustomInput
@@ -103,6 +131,7 @@ const AddRecordForm = () => {
               value={DOB}
               setValue={setDOB}
               placeholder={"Enter Date of Birth"}
+              type={"date"}
             />
           </div>
           <div className="border-b-[1px] border-b-gray-800 py-3">
@@ -111,14 +140,6 @@ const AddRecordForm = () => {
               value={Nationality}
               setValue={setNationality}
               placeholder={"Enter Nationality"}
-            />
-          </div>
-          <div className="border-b-[1px] border-b-gray-800 py-3">
-            <CustomInput
-              label={"Sex"}
-              value={Sex}
-              setValue={setSex}
-              placeholder={"Enter Sex"}
             />
           </div>
           <div className="border-b-[1px] border-b-gray-800 py-3">
@@ -170,6 +191,7 @@ const AddRecordForm = () => {
               value={MedicalValidity}
               setValue={setMedicalValidity}
               placeholder={"Enter Medical Validity"}
+              type={"date"}
             />
           </div>
           <div className="border-b-[1px] border-b-gray-800 py-3">
@@ -178,6 +200,7 @@ const AddRecordForm = () => {
               value={To}
               setValue={setTo}
               placeholder={"Enter To"}
+              type={"date"}
             />
           </div>
           <div className="border-b-[1px] border-b-gray-800 py-3">
@@ -188,27 +211,36 @@ const AddRecordForm = () => {
               placeholder={"Enter Medical Center"}
             />
           </div>
-          <div className="border-b-[1px] border-b-gray-800 py-3">
-            <div className="flex flex-col">
-              <label className="text-white mb-2">QR Code</label>
-              <input
-                type="file"
-                onChange={(e) => setQrCode(e.target.files[0])}
-                className="px-4 py-2 bg-black border-2 border-gray-400 text-white rounded-lg outline-none"
-              />
+          {Loading ? (
+            <></>
+          ) : (
+            <div className="flex gap-x-4 bg-[#212121] justify-end py-4 px-4 flex-wrap rounded-lg">
+              <div
+                className="py-2 px-4 rounded-lg bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500"
+                onClick={(e) => {
+                  onSubmit(e);
+                }}
+              >
+                Save and Add Another
+              </div>
+              <div
+                className="py-2 px-4 rounded-lg bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500"
+                onClick={(e) => {
+                  onSubmit(e);
+                }}
+              >
+                Save and Continue Editing
+              </div>
+              <div
+                className="py-2 px-4 rounded-lg bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500"
+                onClick={(e) => {
+                  onSubmit(e);
+                }}
+              >
+                Save
+              </div>
             </div>
-          </div>
-          <div className="flex gap-x-4 bg-[#212121] justify-end py-4 px-4 flex-wrap rounded-lg">
-            <div className="py-2 px-4 rounded-lg bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500">
-              Save and Add Another
-            </div>
-            <div className="py-2 px-4 rounded-lg bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500">
-              Save and Continue Editing
-            </div>
-            <div className="py-2 px-4 rounded-lg bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500">
-              Save
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </StyledContainer>

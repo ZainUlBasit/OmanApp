@@ -60,13 +60,19 @@ const Home = () => {
                 <IoMdAdd className="text-[#599328] text-xl" />
                 Add
               </div>
-              <div className="flex items-center gap-x-1 cursor-pointer">
-                <MdEdit className="text-[#EFB80B]" /> Change
+              <div
+                className="flex items-center gap-x-1 cursor-pointer"
+                onClick={() => {
+                  navigate("/records");
+                }}
+              >
+                <MdEdit className="text-[#EFB80B]" />
+                Change
               </div>
             </div>
           </div>
         </div>
-        <div className="min-w-[250px] actionCard">
+        {/* <div className="min-w-[250px] actionCard">
           <div className="flex flex-col text-white bg-[#212121] min-h-[50vh]">
             <div className="border-b-2 border-b-[#272727] py-4 px-3 font-roboto text-xl">
               Recent actions
@@ -83,7 +89,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </StyledContainer>
   );

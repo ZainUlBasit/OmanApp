@@ -31,7 +31,9 @@ const CustomInput = ({ label, placeholder, type }) => {
       <input
         placeholder={placeholder}
         type={type ? type : "text"}
-        className="w-[280px] px-3 py-2 rounded-md border-2 border-gray-600 bg-[#121212] text-white placeholder:text-gray-600 CustomInput"
+        className={`w-[280px] px-3 py-2 rounded-md border-2 border-gray-600 bg-[#121212] text-white placeholder:text-gray-600 CustomInput ${
+          type === "date" && " !bg-white text-black"
+        }`}
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />

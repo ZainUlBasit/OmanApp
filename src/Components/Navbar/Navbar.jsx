@@ -24,7 +24,7 @@ const Navbar = () => {
       <div
         className="font-normal font-roboto text-xl text-[#F5DD5D] cursor-pointer select-none"
         onClick={() => {
-          navigate("/home");
+          navigate("/");
         }}
       >
         Oman Administrator

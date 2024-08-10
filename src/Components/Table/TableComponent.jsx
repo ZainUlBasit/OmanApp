@@ -242,6 +242,24 @@ export default function TableComp({ rows, columns, title }) {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
+          sx={{
+            ".MuiTablePagination-toolbar": {
+              color: "white",
+            },
+            ".MuiTablePagination-selectLabel, .MuiTablePagination-displayedRows":
+              {
+                color: "white",
+              },
+            ".MuiTablePagination-actions .MuiIconButton-root": {
+              color: "white",
+            },
+            ".MuiTablePagination-select": {
+              color: "white",
+            },
+            ".MuiTablePagination-menuItem": {
+              color: "black", // To ensure the dropdown options are readable
+            },
+          }}
         />
       </Paper>
       {/* {OpenDeleteModal && (
