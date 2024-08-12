@@ -1,14 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import TableComp from "../../Components/Table/TableComponent";
 import { RecordColumns } from "../../assets/Columns/RecordColumns";
 import { IoMdAdd } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { fetchRecords } from "../../store/Slices/RecordsSlice";
+
+const StyledContainer = styled.div`
+  min-height: 100vh;
+  background-color: #121212;
+  color: white;
+  @media screen and (max-width: 850px) {
+    .filterSide {
+      display: none;
+    }
+    .tableSide {
+      width: 100%;
+    }
+  }
+`;
 
 const Records = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  let isMounted = false;
+  useEffect(() => {
+    if (!isMounted) {
+      isMounted = true;
+      dispatch(fetchRecords());
+    }
+  }, []);
   return (
-    <div className="flex flex-col min-h-screen bg-[#121212]">
+    <StyledContainer>
       <Navbar />
       <div className="flex h-full w-[100%]">
         <div className="min-w-[300px] w-[80%] flex flex-col min-h-screen border-2 border-gray-700 filterSide">
@@ -47,7 +73,7 @@ const Records = () => {
             </div>
           </div>
         </div>
-        <div className="w-[80%]">
+        <div className="w-[80%] tableSide">
           <TableComp
             columns={RecordColumns}
             rows={[{}, {}]}
@@ -55,7 +81,7 @@ const Records = () => {
           />
         </div>
       </div>
-    </div>
+    </StyledContainer>
   );
 };
 

@@ -6,11 +6,26 @@ import { IoMdAdd } from "react-icons/io";
 import { AllRecordColumns } from "../../assets/Columns/AllRecordColumns";
 import QrCode from "../../Components/QrCode/QrCode";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+const StyledContainer = styled.div`
+  min-height: 100vh;
+  background-color: #121212;
+  color: white;
+  @media screen and (max-width: 850px) {
+    .filterSide {
+      display: none;
+    }
+    .tableSide {
+      width: 100%;
+    }
+  }
+`;
 
 const AllRecords = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col min-h-screen bg-[#121212]">
+    <StyledContainer>
       <Navbar />
       <div className="flex h-full w-[100%]">
         <div className="min-w-[300px] w-[20%] flex flex-col min-h-screen border-2 border-gray-700 filterSide">
@@ -49,7 +64,7 @@ const AllRecords = () => {
             </div>
           </div>
         </div>
-        <div className="w-[80%]">
+        <div className="w-[80%] tableSide">
           <TableComp
             columns={AllRecordColumns}
             rows={[{}, {}]}
@@ -57,7 +72,7 @@ const AllRecords = () => {
           />
         </div>
       </div>
-    </div>
+    </StyledContainer>
   );
 };
 

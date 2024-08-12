@@ -19,11 +19,21 @@ const RecordsSlice = createSlice({
     data: [],
     isError: false,
   },
-  reducers: {
-    SendMessage: (state, action) => {},
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchRecords.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchRecords.fulfilled, (state, action) => {
+      state.loading = false;
+      state.data = action.payload;
+      state.isError = false;
+    });
+    builder.addCase(fetchRecords.rejected, (state, action) => {
+      state.loading = false;
+      state.isError = true;
+    });
   },
 });
-
-export const { SendMessage } = RecordsSlice.actions;
 
 export default RecordsSlice.reducer;
