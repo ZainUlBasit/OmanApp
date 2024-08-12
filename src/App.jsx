@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="flex flex-col justify-center items-center py-5">
       <div
-        className="border-custom-bg border-2 px-8 py-2 font-bold hover:bg-custom-bg hover:text-white cursor-pointer rounded-full text-md font-roboto transition-all ease-in-out duration-500"
+        className="border-custom-bg border-2 px-8 py-2 font-bold hover:bg-black hover:text-white cursor-pointer rounded-full text-md font-roboto transition-all ease-in-out duration-500"
         onClick={handlePrint}
       >
         Print
