@@ -50,6 +50,10 @@ const AddRecordForm = () => {
       to: To,
       medical_center: MedicalCenter,
     };
+    setLoading(false);
+    console.log(payload);
+    return;
+
     try {
       const response = await AddUserAPI(payload);
       console.log(response);
