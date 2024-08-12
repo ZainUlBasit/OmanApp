@@ -15,6 +15,10 @@ import { useDispatch } from "react-redux";
 import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { FaFilePdf } from "react-icons/fa6";
+import { DeleteUserByIdAPI } from "../../Api_Requests/Api_Requests";
+import { ErrorToast, SuccessToast } from "../../Utils/ShowToast";
+import DeleteModal from "../Modals/DeleteModal";
+import { fetchRecords } from "../../store/Slices/RecordsSlice";
 
 const BannerHeader = styled.h1.attrs({
   className:
@@ -189,14 +193,16 @@ export default function TableComp({ rows, columns, title }) {
                                   <BiEdit
                                     className="text-[1.2rem] maxWeb1:text-[2rem] maxWeb2:text-[2.5rem] maxWeb3:text-[3rem] maxWeb4:text-[3rem] cursor-pointer hover:text-[green] transition-all duration-500"
                                     onClick={() => {
-                                      setId(row._id);
-                                      // setOpen(true);
+                                      navigate("/records/edit", {
+                                        state: JSON.stringify(row),
+                                      });
                                     }}
                                   />
                                   <RiDeleteBin5Line
                                     className="text-[1.2rem] maxWeb1:text-[2rem] maxWeb2:text-[2.5rem] maxWeb3:text-[3rem] maxWeb4:text-[3rem] cursor-pointer hover:text-[red] transition-all duration-500"
                                     onClick={() => {
                                       setId(row._id);
+                                      setOpenDeleteModal(true);
                                     }}
                                   />
                                 </div>
@@ -274,15 +280,32 @@ export default function TableComp({ rows, columns, title }) {
           }}
         />
       </Paper>
-      {/* {OpenDeleteModal && (
+      {OpenDeleteModal && Id && (
         <DeleteModal
           key={`delete-${Id}`} // Ensure unique key for each modal instance
           Open={OpenDeleteModal}
           setOpen={setOpenDeleteModal}
-          onSubmit={handleDelete}
+          onSubmit={async (e) => {
+            setLoading(true);
+            try {
+              const response = await DeleteUserByIdAPI(Id);
+              if (response.data.success) {
+                SuccessToast(response.data.message);
+                setOpenDeleteModal(false);
+                dispatch(fetchRecords());
+                setId("");
+              } else {
+                ErrorToast("Unable to delete");
+              }
+            } catch (error) {
+              ErrorToast("Unable to delete");
+              console.log(error);
+            }
+            setLoading(false);
+          }}
           Loading={Loading}
         />
-      )} */}
+      )}
     </TableWrapper>
   );
 }

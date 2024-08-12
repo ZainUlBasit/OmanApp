@@ -21,10 +21,13 @@ export const apiForImage = axios.create({
 });
 
 // Auth Requests
-export const LoginUserApi = (payload) => api.post("/login", payload);
+export const LoginUserApi = (payload) => api.post("/users/login", payload);
 export const RegisterUserApi = (payload) => api.post("/register", payload);
 
 //   Records Requests
 export const AddUserAPI = (payload) => api.post("/users", payload);
 export const GetUsersAPI = () => api.get("/users");
 export const GetUserByIdAPI = (id) => api.get("/users/" + id);
+export const UpdateUserByIdAPI = (id, payload) =>
+  api.put("/users/" + id, payload);
+export const DeleteUserByIdAPI = (id) => api.delete("/users/" + id);

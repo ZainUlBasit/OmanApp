@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { LoginUserApi } from "../../Api_Requests/Api_Requests";
 
 const StyledContainerA = styled.div`
   display: flex;
@@ -23,6 +24,27 @@ const StyledContainerA = styled.div`
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [LoginLoading, setLoginLoading] = useState(false);
+
+  const onSubmit = async (e) => {
+    setLoginLoading(true);
+    // if (!validateEmail(email)) {
+    //   ErrorToast("Invalid Email!");
+    // } else if (!password) {
+    //   ErrorToast("Password Field Required!");
+    // }
+    try {
+      const response = await LoginUserApi({ email, password });
+      if (response.data.success) {
+        localStorage.setItem("logged-in", true);
+        window.location.reload();
+      }
+    } catch (err) {
+      console.log(err);
+      //   ErrorToast(err?.response?.data?.error?.msg || err.message);
+    }
+    setLoginLoading(false);
+  };
   return (
     <div className="flex justify-center items-center h-screen w-screen bg-[#212121]">
       <div className="min-w-[350px] max-w-[500px] bg-[#121212] rounded-lg overflow-hidden">
@@ -51,7 +73,10 @@ const Login = () => {
             />
           </StyledContainerA>
           <div className="w-full flex justify-center items-center mt-4">
-            <div className="py-2 px-4 rounded-lg w-fit bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500 text-center text-white">
+            <div
+              className="py-2 px-4 rounded-lg w-fit bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500 text-center text-white"
+              onClick={onSubmit}
+            >
               Login
             </div>
           </div>
