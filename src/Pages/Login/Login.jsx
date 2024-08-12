@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { LoginUserApi } from "../../Api_Requests/Api_Requests";
+import { ErrorToast } from "../../Utils/ShowToast";
+import AddingLightLoader from "../../Components/Loader/AddingLightLoader";
 
 const StyledContainerA = styled.div`
   display: flex;
@@ -41,7 +43,7 @@ const Login = () => {
       }
     } catch (err) {
       console.log(err);
-      //   ErrorToast(err?.response?.data?.error?.msg || err.message);
+      ErrorToast(err?.response?.data?.error?.msg || err.message);
     }
     setLoginLoading(false);
   };
@@ -73,12 +75,16 @@ const Login = () => {
             />
           </StyledContainerA>
           <div className="w-full flex justify-center items-center mt-4">
-            <div
-              className="py-2 px-4 rounded-lg w-fit bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500 text-center text-white"
-              onClick={onSubmit}
-            >
-              Login
-            </div>
+            {LoginLoading ? (
+              <AddingLightLoader />
+            ) : (
+              <div
+                className="py-2 px-4 rounded-lg w-fit bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500 text-center text-white"
+                onClick={onSubmit}
+              >
+                Login
+              </div>
+            )}
           </div>
         </div>
       </div>

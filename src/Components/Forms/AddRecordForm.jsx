@@ -5,6 +5,7 @@ import { IoMdAdd } from "react-icons/io";
 import styled from "styled-components";
 import CustomSelect from "../Input/CustomSelect";
 import { AddUserAPI } from "../../Api_Requests/Api_Requests";
+import AddingLightLoader from "../Loader/AddingLightLoader";
 
 const StyledContainer = styled.div`
   min-height: 100vh;
@@ -54,6 +55,7 @@ const AddRecordForm = () => {
     try {
       const response = await AddUserAPI(payload);
       console.log(response);
+      navigate("/records");
     } catch (err) {
       console.log(err);
     }
@@ -214,7 +216,7 @@ const AddRecordForm = () => {
             />
           </div>
           {Loading ? (
-            <></>
+            <AddingLightLoader />
           ) : (
             <div className="flex gap-x-4 bg-[#212121] justify-end py-4 px-4 flex-wrap rounded-lg">
               <div

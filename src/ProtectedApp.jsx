@@ -32,7 +32,7 @@ function ProtectedApp() {
         setIsLoggedIn(false);
         setLoading(false);
       }
-    }, 4000); // execute the function after 4 seconds
+    }, 1000); // execute the function after 4 seconds
   }, []);
 
   const VisitorRouter = createBrowserRouter([
