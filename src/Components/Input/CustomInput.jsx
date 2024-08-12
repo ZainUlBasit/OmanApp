@@ -22,9 +22,7 @@ const StyledContainerA = styled.div`
   }
 `;
 
-const CustomInput = ({ label, placeholder, type }) => {
-  const [value, setValue] = useState("");
-
+const CustomInput = ({ label, placeholder, type, value, setValue }) => {
   return (
     <StyledContainerA>
       <div className="w-[200px] CustomLabel">{label}:</div>
