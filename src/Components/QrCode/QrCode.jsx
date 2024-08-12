@@ -3,8 +3,8 @@ import "./styles.css";
 import QRCodeStyling from "qr-code-styling";
 
 const qrCode = new QRCodeStyling({
-  width: 300,
-  height: 300,
+  width: 200,
+  height: 200,
   image:
     "https://i0.wp.com/deohoman.org/wp-content/uploads/2019/10/MOH-best-LOGO.png?fit=290%2C300&ssl=1",
   dotsOptions: {

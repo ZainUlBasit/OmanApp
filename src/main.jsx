@@ -11,6 +11,7 @@ import Records from "./Pages/Records/Records";
 import AllRecords from "./Pages/Records/AllRecords";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import Login from "./Pages/Login/Login";
+import "./i18next.js";
 
 const router = createBrowserRouter([
   {

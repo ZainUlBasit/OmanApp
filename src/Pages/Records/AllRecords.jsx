@@ -17,7 +17,7 @@ const AllRecords = () => {
           <div className="">
             <input
               placeholder="filter"
-              className="w-full px-2 py-2 bg-black border-2 border-gray-400 text-white rounded-t-lg outline-none"
+              className="w-full px-2 py-2 bg-black border-2 border-gray-400 text-white bg-light_black rounded-t-lg outline-none"
             />
           </div>
           <div className="">
