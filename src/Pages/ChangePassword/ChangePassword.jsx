@@ -7,6 +7,7 @@ import { RecordColumns } from "../../assets/Columns/RecordColumns";
 import styled from "styled-components";
 import CustomInput from "../../Components/Input/CustomInput";
 import { ChangePasswordUserApi } from "../../Api_Requests/Api_Requests";
+import { ErrorToast, SuccessToast } from "../../Utils/ShowToast";
 
 const StyledContainer = styled.div`
   min-height: 100vh;
@@ -51,9 +52,23 @@ const ChangePassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await ChangePasswordUserApi({});
-    } catch (error) {}
+    if (newPassword !== confirmPassword) {
+      ErrorToast("New Password and Confirm Password not Same!");
+    } else {
+      try {
+        const response = await ChangePasswordUserApi({
+          userId: "66b7387b97e7c12d815eec66",
+          oldPassword,
+          newPassword,
+        });
+        SuccessToast("Message Successfully changed!");
+        setConfirmPassword("");
+        setNewPassword("");
+        setOldPassword("");
+      } catch (error) {
+        ErrorToast("Unable to update password!");
+      }
+    }
   };
   return (
     <StyledContainer>
@@ -135,7 +150,10 @@ const ChangePassword = () => {
               />
             </div>
             <div className="flex gap-x-4 bg-[#212121] justify-end py-4 px-4 flex-wrap rounded-lg">
-              <div className="py-2 px-4 rounded-lg bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500">
+              <div
+                className="py-2 px-4 rounded-lg bg-[#264B5D] hover:bg-[#619AB6] cursor-pointer transition-all ease-in-out duration-500"
+                onClick={onSubmit}
+              >
                 CHANGE MY PASSWORD
               </div>
             </div>

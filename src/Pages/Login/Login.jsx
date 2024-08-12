@@ -35,6 +35,8 @@ const Login = () => {
     // }
     try {
       const response = await LoginUserApi({ email, password });
+      console.log(response);
+      return;
       if (response.data.success) {
         localStorage.setItem("logged-in", true);
         window.location.reload();
