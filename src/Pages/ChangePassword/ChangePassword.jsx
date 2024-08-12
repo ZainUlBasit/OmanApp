@@ -6,6 +6,7 @@ import TableComp from "../../Components/Table/TableComponent";
 import { RecordColumns } from "../../assets/Columns/RecordColumns";
 import styled from "styled-components";
 import CustomInput from "../../Components/Input/CustomInput";
+import { ChangePasswordUserApi } from "../../Api_Requests/Api_Requests";
 
 const StyledContainer = styled.div`
   min-height: 100vh;
@@ -48,6 +49,12 @@ const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await ChangePasswordUserApi({});
+    } catch (error) {}
+  };
   return (
     <StyledContainer>
       <Navbar />

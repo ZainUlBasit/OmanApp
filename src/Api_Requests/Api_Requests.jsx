@@ -22,6 +22,8 @@ export const apiForImage = axios.create({
 
 // Auth Requests
 export const LoginUserApi = (payload) => api.post("/users/login", payload);
+export const ChangePasswordUserApi = (payload) =>
+  api.post("/users/change-password", payload);
 export const RegisterUserApi = (payload) => api.post("/register", payload);
 
 //   Records Requests
