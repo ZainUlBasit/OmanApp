@@ -6,6 +6,7 @@ import styled from "styled-components";
 import CustomSelect from "../Input/CustomSelect";
 import { AddUserAPI } from "../../Api_Requests/Api_Requests";
 import AddingLightLoader from "../Loader/AddingLightLoader";
+import { useNavigate } from "react-router-dom";
 
 const StyledContainer = styled.div`
   min-height: 100vh;
@@ -33,6 +34,7 @@ const AddRecordForm = () => {
   const [To, setTo] = useState("");
   const [MedicalCenter, setMedicalCenter] = useState("");
   const [Loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const onSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -209,7 +211,6 @@ const AddRecordForm = () => {
               value={To}
               setValue={setTo}
               placeholder={"Enter To"}
-              type={"date"}
             />
           </div>
           <div className="border-b-[1px] border-b-gray-800 py-3">
