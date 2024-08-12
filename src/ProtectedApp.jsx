@@ -75,7 +75,7 @@ function ProtectedApp() {
       path: "/change-password",
       element: <ChangePassword />,
     },
-    // { path: "/*", element: <Navigate to="/" /> },
+    { path: "/*", element: <Navigate to="/" /> },
   ]);
 
   return Loading ? (
