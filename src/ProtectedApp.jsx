@@ -40,6 +40,10 @@ function ProtectedApp() {
       path: "/login",
       element: <Login />,
     },
+    {
+      path: "/user-record/:id",
+      element: <UserPdf />,
+    },
     { path: "/*", element: <Navigate to="/login" /> },
   ]);
   const AdminRouter = createBrowserRouter([
@@ -50,10 +54,6 @@ function ProtectedApp() {
     {
       path: "/record/:id",
       element: <App />,
-    },
-    {
-      path: "/user-record/:id",
-      element: <UserPdf />,
     },
     {
       path: "/records/add",
