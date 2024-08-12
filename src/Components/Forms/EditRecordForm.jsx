@@ -10,6 +10,7 @@ import CustomInput from "../Input/CustomInput";
 import CustomSelect from "../Input/CustomSelect";
 import { IoMdAdd } from "react-icons/io";
 import { ErrorToast, SuccessToast } from "../../Utils/ShowToast";
+import AddingLightLoader from "../Loader/AddingLightLoader";
 
 const StyledContainer = styled.div`
   min-height: 100vh;
@@ -184,7 +185,6 @@ const EditRecordForm = () => {
                   value={DOB}
                   setValue={setDOB}
                   placeholder={"Enter Date of Birth"}
-                  type={"date"}
                 />
               </div>
               <div className="border-b-[1px] border-b-gray-800 py-3">
@@ -201,8 +201,8 @@ const EditRecordForm = () => {
                   value={Sex}
                   setValue={setSex}
                   options={[
-                    { _id: 1, label: "Male" },
-                    { _id: 2, label: "Female" },
+                    { _id: "Male", label: "Male" },
+                    { _id: "Female", label: "Female" },
                   ]}
                 />
               </div>
@@ -245,7 +245,6 @@ const EditRecordForm = () => {
                   value={MedicalValidity}
                   setValue={setMedicalValidity}
                   placeholder={"Enter Medical Validity"}
-                  type={"date"}
                 />
               </div>
               <div className="border-b-[1px] border-b-gray-800 py-3">
@@ -254,7 +253,6 @@ const EditRecordForm = () => {
                   value={To}
                   setValue={setTo}
                   placeholder={"Enter To"}
-                  type={"date"}
                 />
               </div>
               <div className="border-b-[1px] border-b-gray-800 py-3">
@@ -266,7 +264,7 @@ const EditRecordForm = () => {
                 />
               </div>
               {Loading ? (
-                <></>
+                <AddingLightLoader />
               ) : (
                 <div className="flex gap-x-4 bg-[#212121] justify-end py-4 px-4 flex-wrap rounded-lg">
                   <div
