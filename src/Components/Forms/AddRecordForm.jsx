@@ -79,10 +79,15 @@ const AddRecordForm = () => {
                 DATAENTRY
               </div>
               <div className="flex justify-between text-white py-2 px-4 font-roboto bg-[#00363A]">
-                <div className="text-[#81d4fa] cursor-pointer">Add records</div>
+                <div className="text-[#81d4fa] cursor-pointer">Records</div>
                 <div className="text-white flex gap-x-3">
                   <div className="flex items-center gap-x-1 cursor-pointer">
-                    <IoMdAdd className="text-[#599328] text-xl" />
+                    <IoMdAdd
+                      className="text-[#599328] text-xl"
+                      onClick={() => {
+                        navigate("/records");
+                      }}
+                    />
                     Add
                   </div>
                 </div>
@@ -151,8 +156,8 @@ const AddRecordForm = () => {
               value={Sex}
               setValue={setSex}
               options={[
-                { _id: 1, label: "Male" },
-                { _id: 2, label: "Female" },
+                { _id: "Male", label: "Male" },
+                { _id: "Female", label: "Female" },
               ]}
             />
           </div>
