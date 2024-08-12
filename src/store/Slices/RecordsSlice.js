@@ -5,7 +5,7 @@ export const fetchRecords = createAsyncThunk("records/fetch", async () => {
   try {
     const response = await GetUsersAPI();
     console.log(response.data);
-    return [];
+    return response.data.data || c[];
   } catch (error) {
     console.log(error);
     throw error; // Throw error to trigger the rejected case
