@@ -168,6 +168,7 @@ const AddRecordForm = () => {
               value={CivilId}
               setValue={setCivilId}
               placeholder={"Enter Civil ID"}
+              type={"number"}
             />
           </div>
           <div className="border-b-[1px] border-b-gray-800 py-3">
