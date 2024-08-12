@@ -178,7 +178,7 @@ function App() {
           </div>
           <div className="border-2 border-[red] px-4 flex items-center justify-between flex-col h-full w-[35%] rounded-lg rightside gap-y-10 py-8">
             <div className="flex flex-col justify-center">
-              <QrCode Value={`${BASE_URL}/${RecordsState.data._id}`} />
+              <QrCode url={`${BASE_URL}/${RecordsState.data._id}`} />
 
               <div className="flex justify-center items-center text-xl font-roboto pt-5">
                 <div className="">Scan Me / {t("scanme")}</div>
