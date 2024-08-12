@@ -81,12 +81,6 @@ function UserPdf() {
     </div>
   ) : (
     <div className="flex flex-col justify-center items-center py-5">
-      <div
-        className="border-custom-bg border-2 px-8 py-2 font-bold hover:bg-black hover:text-white cursor-pointer rounded-full text-md font-roboto transition-all ease-in-out duration-500"
-        onClick={handlePrint}
-      >
-        Print
-      </div>
       <div className="w-screen" ref={contentToPrint}>
         <StyledTopDiv className="flex justify-center items-center px-2 py-3 text-xl relative">
           <div className="absolute top-10 left-10 text-md font-roboto leftside">
