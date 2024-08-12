@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import App from "./App";
+import App from "./App.jsx";
 import Home from "./Pages/Home/Home";
 import AddRecordForm from "./Components/Forms/AddRecordForm";
 import { store } from "./store/store";
@@ -12,6 +12,7 @@ import AllRecords from "./Pages/Records/AllRecords";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import Login from "./Pages/Login/Login";
 import "./i18next.js";
+import UserPdf from "./UserPdf.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/record/:id",
     element: <App />,
+  },
+  {
+    path: "/user-record/:id",
+    element: <UserPdf />,
   },
   {
     path: "/records/add",

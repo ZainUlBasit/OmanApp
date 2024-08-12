@@ -53,7 +53,7 @@ const StyledTopDiv = styled.div`
   }
 `;
 
-function App() {
+function UserPdf() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const RecordsState = useSelector((state) => state.RecordsState);
@@ -177,15 +177,6 @@ function App() {
             />
           </div>
           <div className="border-2 border-[red] px-4 flex items-center justify-between flex-col h-full w-[35%] rounded-lg rightside gap-y-10 py-8">
-            <div className="flex flex-col justify-center">
-              <QrCode
-                url={`${BASE_URL}/user-record/${RecordsState.data._id}`}
-              />
-
-              <div className="flex justify-center items-center text-xl font-roboto pt-5">
-                <div className="">Scan Me / {t("scanme")}</div>
-              </div>
-            </div>
             <div className="flex items-center flex-col gap-y-1">
               <div className="text-3xl">{RecordsState.data.arabic_name}</div>
               <div className="text-xl">{RecordsState.data.name}</div>
@@ -207,4 +198,4 @@ function App() {
   );
 }
 
-export default App;
+export default UserPdf;
