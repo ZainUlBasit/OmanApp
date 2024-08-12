@@ -27,4 +27,4 @@ export const RegisterUserApi = (payload) => api.post("/register", payload);
 //   Records Requests
 export const AddUserAPI = (payload) => api.post("/users", payload);
 export const GetUsersAPI = () => api.get("/users");
-export const GetUserByIdAPI = () => api.get("/users/" + id);
+export const GetUserByIdAPI = (id) => api.get("/users/" + id);

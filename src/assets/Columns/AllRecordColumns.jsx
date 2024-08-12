@@ -15,13 +15,14 @@ export const AllRecordColumns = [
     minWidth: 150,
   },
   {
-    id: "passport_no",
+    id: "passport_number",
     label: "Passport No	",
     minWidth: 150,
   },
   {
     id: "actions",
     label: "Actions",
-    minWidth: 150,
+    minWidth: 250,
+    maxWidth: 300,
   },
 ];

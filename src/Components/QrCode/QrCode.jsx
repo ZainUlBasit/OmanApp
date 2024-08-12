@@ -31,8 +31,8 @@ const qrCode = new QRCodeStyling({
   },
 });
 
-export default function QrCode() {
-  const [url, setUrl] = useState("https://www.appspot.com.pk");
+export default function QrCode({ url }) {
+  //   const [url, setUrl] = useState("https://www.appspot.com.pk");
   const [fileExt, setFileExt] = useState("png");
   const ref = useRef(null);
 

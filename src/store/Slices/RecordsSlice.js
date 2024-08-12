@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { GetUsersAPI } from "../../Api_Requests/Api_Requests";
+import { GetUserByIdAPI, GetUsersAPI } from "../../Api_Requests/Api_Requests";
 
-export const fetchRecords = createAsyncThunk("records/fetch", async () => {
+export const fetchRecords = createAsyncThunk("records/fetch", async (id) => {
   try {
-    const response = await GetUsersAPI();
-    console.log(response.data);
+    let response;
+    if (id) response = await GetUserByIdAPI(id);
+    else response = await GetUsersAPI();
     return response.data.data || [];
   } catch (error) {
     console.log(error);

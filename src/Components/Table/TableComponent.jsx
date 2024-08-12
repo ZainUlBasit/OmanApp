@@ -14,6 +14,7 @@ import { BiEdit } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { FaFilePdf } from "react-icons/fa6";
 
 const BannerHeader = styled.h1.attrs({
   className:
@@ -116,6 +117,7 @@ export default function TableComp({ rows, columns, title }) {
                     className="select-none"
                     style={{
                       minWidth: column.minWidth,
+                      maxWidth: column.maxWidth ? column.maxWidth : "",
                       backgroundColor: "#212121",
                       color: "white",
                       fontWeight: "normal",
@@ -199,26 +201,36 @@ export default function TableComp({ rows, columns, title }) {
                                   />
                                 </div>
                               ) : column.id === "actions" &&
-                                title === "Records" ? (
-                                <div className="flex justify-start items-center gap-x-2 text-white">
-                                  <div className="bg-green-800 text-white">
+                                title === "All Records Information" ? (
+                                <div className="flex justify-start items-center gap-x-2 text-white flex-wrap gap-y-2">
+                                  <div className="bg-green-800 text-white px-2 rounded-md py-1">
                                     Online Record
                                   </div>
-                                  <div className="bg-gray-800 text-white">
+                                  <div className="text-gray-800 bg-white px-2 rounded-md py-1">
                                     Al Razi
                                   </div>
-                                  <div className="bg-gray-800 text-white">
+                                  <div className="text-gray-800 bg-white px-2 rounded-md py-1">
                                     Noor Ul Shipa
                                   </div>
-                                  <div className="bg-gray-800 text-white">
+                                  <div className="text-gray-800 bg-white px-2 rounded-md py-1">
                                     Al Gharbia
                                   </div>
-                                  <div className="bg-gray-800 text-white">
+                                  <div className="text-gray-800 bg-white px-2 rounded-md py-1">
                                     Badr Al Sama
                                   </div>
-                                  <div className="bg-gray-800 text-white">
+                                  <div className="text-gray-800 bg-white px-2 rounded-md py-1">
                                     General 2
                                   </div>
+                                </div>
+                              ) : column.id === "preview" &&
+                                title === "Records" ? (
+                                <div
+                                  className=" flex justify-center items-center"
+                                  onClick={() => {
+                                    navigate("/record/" + c_id);
+                                  }}
+                                >
+                                  <FaFilePdf className="text-white text-xl hover:text-gray-400 transition-all ease-in-out duration-500" />
                                 </div>
                               ) : column.format && typeof value === "number" ? (
                                 column.format(value)

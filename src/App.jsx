@@ -1,9 +1,13 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Card from "./Components/Cards/Card";
 import styled from "styled-components";
 import QrCode from "./Components/QrCode/QrCode";
 import { useReactToPrint } from "react-to-print";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { fetchRecords } from "./store/Slices/RecordsSlice";
+import { BASE_URL } from "./assets/Config";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -50,6 +54,18 @@ const StyledTopDiv = styled.div`
 `;
 
 function App() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const RecordsState = useSelector((state) => state.RecordsState);
+
+  let isMounted = false;
+  useEffect(() => {
+    if (!isMounted) {
+      isMounted = true;
+      dispatch(fetchRecords(id));
+    }
+  }, []);
+
   const { t } = useTranslation();
   const contentToPrint = useRef(null);
   const handlePrint = useReactToPrint({
@@ -59,7 +75,11 @@ function App() {
     onAfterPrint: () => console.log("after printing..."),
     removeAfterPrint: true,
   });
-  return (
+  return RecordsState.loading ? (
+    <div className="flex flex-col justify-center items-center py-5">
+      <div>loading...</div>
+    </div>
+  ) : (
     <div className="flex flex-col justify-center items-center py-5">
       <div
         className="border-custom-bg border-2 px-8 py-2 font-bold hover:bg-black hover:text-white cursor-pointer rounded-full text-md font-roboto transition-all ease-in-out duration-500"
@@ -94,11 +114,11 @@ function App() {
               values={[
                 {
                   title: "Application Type",
-                  value: "FOR VISA & RESIDENCY PURPOSE - RENEWAL",
+                  value: RecordsState.data.registration_type,
                 },
                 {
                   title: "Application Number",
-                  value: "RCW2407241618908",
+                  value: RecordsState.data.registration_number,
                 },
               ]}
             />
@@ -106,35 +126,35 @@ function App() {
               values={[
                 {
                   title: "Name",
-                  value: "ABDUL KALAM",
+                  value: RecordsState.data.name,
                 },
                 {
                   title: "Date of Birth",
-                  value: "10-11-1989",
+                  value: RecordsState.data.dob,
                 },
                 {
                   title: "Nationality",
-                  value: "BANGLADESHI",
+                  value: RecordsState.data.nationality,
                 },
                 {
                   title: "Gender",
-                  value: "MALE",
+                  value: RecordsState.data.gender,
                 },
                 {
                   title: "Passport No.",
-                  value: "EH0414847",
+                  value: RecordsState.data.passport_number,
                 },
                 {
                   title: "Civil No.",
-                  value: "91806846",
+                  value: RecordsState.data.civil_id,
                 },
                 {
                   title: "Sponsor",
-                  value: "الخليجية للانماء والتطوير",
+                  value: "/////////",
                 },
                 {
                   title: "Category",
-                  value: "RENEW - LABOUR, & RESIDENT CARD (WORKERS)",
+                  value: RecordsState.data.category,
                 },
               ]}
             />
@@ -142,31 +162,31 @@ function App() {
               values={[
                 {
                   title: "Validity of the Medical",
-                  value: "25-04-2024",
+                  value: RecordsState.data.medical_validity,
                 },
                 {
                   title: "To",
-                  value: "25-04-2024",
+                  value: RecordsState.data.to,
                 },
 
                 {
                   title: "Medical Center",
-                  value: "Dhofar International Medical Center llc - Salalah",
+                  value: RecordsState.data.medical_center,
                 },
               ]}
             />
           </div>
           <div className="border-2 border-[red] px-4 flex items-center justify-between flex-col h-full w-[35%] rounded-lg rightside gap-y-10 py-8">
             <div className="flex flex-col justify-center">
-              <QrCode />
+              <QrCode Value={`${BASE_URL}/${RecordsState.data._id}`} />
 
               <div className="flex justify-center items-center text-xl font-roboto pt-5">
                 <div className="">Scan Me / {t("scanme")}</div>
               </div>
             </div>
             <div className="flex items-center flex-col gap-y-1">
-              <div className="text-3xl">عبدالكلام</div>
-              <div className="text-xl">ABDUL KALAM</div>
+              <div className="text-3xl">{RecordsState.data.arabic_name}</div>
+              <div className="text-xl">{RecordsState.data.name}</div>
             </div>
             <div className="flex w-full flex-col gap-y-2">
               <div className="flex justify-between w-full">
