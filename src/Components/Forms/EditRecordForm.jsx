@@ -245,6 +245,7 @@ const EditRecordForm = () => {
                   value={MedicalValidity}
                   setValue={setMedicalValidity}
                   placeholder={"Enter Medical Validity"}
+                  type={"date"}
                 />
               </div>
               <div className="border-b-[1px] border-b-gray-800 py-3">
@@ -253,6 +254,7 @@ const EditRecordForm = () => {
                   value={To}
                   setValue={setTo}
                   placeholder={"Enter To"}
+                  type={"date"}
                 />
               </div>
               <div className="border-b-[1px] border-b-gray-800 py-3">
