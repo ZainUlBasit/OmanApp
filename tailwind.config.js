@@ -5,6 +5,9 @@ export default {
     extend: {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
+        georgia: ["Georgia", "serif"],
+        poppins: ["Poppins", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       screens: {
         sm: { max: "1364px" },

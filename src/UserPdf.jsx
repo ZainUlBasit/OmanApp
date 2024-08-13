@@ -92,7 +92,7 @@ function UserPdf() {
             <div className="text-2xl TitleTextAr">
               شهادة الفحص الطبي للوافدين
             </div>
-            <div className="text-xl TitleTextEn">
+            <div className="text-xl TitleTextEn font-georgia">
               Expatriates Medical Exam Certificate
             </div>
           </div>
