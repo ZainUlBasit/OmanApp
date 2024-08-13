@@ -50,6 +50,7 @@ const AddRecordForm = () => {
       civil_id: CivilId,
       category: Category,
       medical_validity: MedicalValidity,
+      sponsor: Sponsor,
       to: To,
       medical_center: MedicalCenter,
     };

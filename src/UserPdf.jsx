@@ -89,7 +89,7 @@ function UserPdf() {
           </div>
           <div className="w-full flex flex-col items-center justify-center py-4 gap-y-3">
             <img src="/logo.png" className="ImageLogo" alt="" />
-            <div className="text-2xl TitleTextAr">
+            <div className="text-2xl TitleTextAr font-georgia">
               شهادة الفحص الطبي للوافدين
             </div>
             <div className="text-xl TitleTextEn font-georgia">
