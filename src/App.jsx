@@ -11,10 +11,10 @@ import { BASE_URL } from "./assets/Config";
 
 const StyledDiv = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: start;
   padding: 12px 8px;
-  column-gap: 1.25rem;
+  column-gap: 0.6rem;
   @media (max-width: 560px) {
     flex-direction: column;
     row-gap: 1.25rem;
