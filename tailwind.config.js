@@ -8,6 +8,7 @@ export default {
         georgia: ["Georgia", "serif"],
         poppins: ["Poppins", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
+        "noto-kufi-arabic": ['"Noto Kufi Arabic"', "sans-serif"],
       },
       screens: {
         sm: { max: "1364px" },

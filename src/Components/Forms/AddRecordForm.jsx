@@ -18,6 +18,27 @@ const StyledContainer = styled.div`
     }
   }
 `;
+
+const StyledContainerAA = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  align-items: center;
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+    align-items: start;
+    column-gap: 4px;
+    row-gap: 4px;
+    width: 100vw;
+    padding: 0px 10px;
+    .CustomLabel {
+      width: 100%;
+    }
+    .CustomInput {
+      width: 100%;
+    }
+  }
+`;
 const AddRecordForm = () => {
   const [Reg_type, setReg_type] = useState("");
   const [Reg_no, setReg_no] = useState("");
@@ -217,12 +238,27 @@ const AddRecordForm = () => {
             />
           </div>
           <div className="border-b-[1px] border-b-gray-800 py-3">
-            <CustomInput
-              label={"Medical Center"}
-              value={MedicalCenter}
-              setValue={setMedicalCenter}
-              placeholder={"Enter Medical Center"}
-            />
+            <StyledContainerAA>
+              <div className="w-[200px] CustomLabel">Medical Centre:</div>
+              <input
+                placeholder={"Enter Medical Center"}
+                type={"text"}
+                className={`w-[280px] px-3 py-2 rounded-md border-2 border-gray-600 bg-[#121212] text-white placeholder:text-gray-600 CustomInput`}
+                value={MedicalCenter}
+                onChange={(e) => setMedicalCenter(e.target.value)}
+                list="medical-centers"
+              />
+            </StyledContainerAA>
+            <datalist id="medical-centers">
+              <option value="BADR AL SAMAA HOSPITAL - SALALAH" />
+              <option value="AL Gharbia Visa Medical Centre - SALALAH" />
+              <option value="AL NASAEEM INVESTMENT  L.L.C - SALALAH" />
+              <option value="DHOFAR INTERNATION MEDICAL CENTER LLC - SALALAH" />
+              <option value="NEW AL. RAAZI HOSPITAL LLC (EXPATRIATE EXAMINATION CENTER) - SALALAH" />
+              <option value="NOOR AL_SHIFA MEDICAL COMPLEX(EXPATRIATE EXAMINATION CENTER) - SALALAH" />
+              <option value="SAFA MED DIAGNOSTIC CENTRE (EXPATRIATE EXAMINATION CENTER) - AL.GHOUBRA (NORTH)" />
+              <option value="BOMBAY MEDICAL & DIAGNOSTIC CENTER (EXPATRIATE EXAMINATION CENTER) - RUWI" />
+            </datalist>
           </div>
           {Loading ? (
             <AddingLightLoader />

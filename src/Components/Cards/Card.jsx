@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const Card = ({ values }) => {
+const Card = ({ values, ArWidth, EngWidth }) => {
   const { t } = useTranslation();
 
   return (
@@ -9,11 +9,21 @@ const Card = ({ values }) => {
       {values.map(({ title, value }) => (
         <div key={title} className="flex justify-between items-start gap-x-2">
           {/* English title */}
-          <div className="font-bold whitespace-nowrap">{title} :</div>
-          <div className="text-center">{value}</div>
+          <div
+            className={`font-bold whitespace-nowrap font-noto-kufi-arabic ${
+              EngWidth && EngWidth
+            }`}
+          >
+            {title} :
+          </div>
+          <div className="text-center font-noto-kufi-arabic">{value}</div>
           {/* Arabic title */}
-          <div className="font-bold whitespace-nowrap">
-            {t(title.replace(/\s/g, "").toLowerCase())}
+          <div
+            className={`font-semibold whitespace-nowrap font-noto-kufi-arabic text-right  ${
+              ArWidth && ArWidth
+            }`}
+          >
+            : {t(title.replace(/\s/g, "").toLowerCase())}
           </div>
         </div>
       ))}

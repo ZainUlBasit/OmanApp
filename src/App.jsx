@@ -82,28 +82,28 @@ function App() {
   ) : (
     <div className="flex flex-col justify-center items-center py-5">
       <div
-        className="border-custom-bg border-2 px-8 py-2 font-bold hover:bg-black hover:text-white cursor-pointer rounded-full text-md font-roboto transition-all ease-in-out duration-500"
+        className="border-custom-bg border-2 px-8 py-2 font-bold hover:bg-black hover:text-white cursor-pointer rounded-full text-md font-noto-kufi-arabic transition-all ease-in-out duration-500"
         onClick={handlePrint}
       >
         Print
       </div>
       <div className="w-screen" ref={contentToPrint}>
         <StyledTopDiv className="flex justify-center items-center px-2 py-3 text-xl relative">
-          <div className="absolute top-10 left-10 text-md font-roboto leftside">
+          <div className="absolute top-10 left-10 text-md font-noto-kufi-arabic leftside">
             <div className="">Sultanate Of Oman</div>
             <div className="">Ministry Of Health</div>
           </div>
           <div className="w-full flex flex-col items-center justify-center py-4 gap-y-3">
             <img src="/logo.png" className="ImageLogo" alt="" />
-            <div className="text-2xl TitleTextAr">
+            <div className="text-2xl TitleTextAr font-noto-kufi-arabic">
               شهادة الفحص الطبي للوافدين
             </div>
-            <div className="text-xl TitleTextEn">
+            <div className="text-xl TitleTextEn font-noto-kufi-arabic">
               Expatriates Medical Exam Certificate
             </div>
           </div>
 
-          <div className="absolute top-10 right-10 text-xl text-md font-roboto rightside">
+          <div className="absolute top-10 right-10 text-xl text-md font-noto-kufi-arabic rightside">
             <div className="">سلطنة عمان</div>
             <div className="">وزارة الصحة</div>
           </div>
@@ -111,6 +111,8 @@ function App() {
         <StyledDiv>
           <div className="flex flex-col gap-y-3 w-[70%] leftside">
             <Card
+              ArWidth={"w-[170px]"}
+              EngWidth={"w-[195px]"}
               values={[
                 {
                   title: "Application Type",
@@ -123,6 +125,8 @@ function App() {
               ]}
             />
             <Card
+              EngWidth={"w-[195px]"}
+              ArWidth={"w-[170px]"}
               values={[
                 {
                   title: "Name",
@@ -150,7 +154,7 @@ function App() {
                 },
                 {
                   title: "Sponsor",
-                  value: "/////////",
+                  value: RecordsState.data.sponsor || "////////",
                 },
                 {
                   title: "Category",
@@ -159,6 +163,8 @@ function App() {
               ]}
             />
             <Card
+              ArWidth={"w-[170px]"}
+              EngWidth={"w-[195px]"}
               values={[
                 {
                   title: "Validity of the Medical",
@@ -182,20 +188,30 @@ function App() {
                 url={`${BASE_URL}/user-record/${RecordsState.data._id}`}
               />
 
-              <div className="flex justify-center items-center text-xl font-roboto pt-5">
-                <div className="">Scan Me / {t("scanme")}</div>
+              <div className="flex justify-center items-center text-xl font-noto-kufi-arabic pt-5">
+                <div className="font-noto-kufi-arabic">
+                  Scan Me / {t("scanme")}
+                </div>
               </div>
             </div>
             <div className="flex items-center flex-col gap-y-1">
-              <div className="text-3xl">{RecordsState.data.arabic_name}</div>
-              <div className="text-xl">{RecordsState.data.name}</div>
+              <div className="text-3xl font-noto-kufi-arabic">
+                {RecordsState.data.arabic_name}
+              </div>
+              <div className="text-xl font-noto-kufi-arabic">
+                {RecordsState.data.name}
+              </div>
             </div>
             <div className="flex w-full flex-col gap-y-2">
               <div className="flex justify-between w-full">
-                <div className="text-xl">Medical Status</div>
-                <div className="text-2xl">الحالة الطبية</div>
+                <div className="text-[1rem] font-noto-kufi-arabic">
+                  Medical Status
+                </div>
+                <div className="text-[1rem] font-noto-kufi-arabic">
+                  الحالة الطبية
+                </div>
               </div>
-              <div className="border-dotted border-4 flex items-center justify-center py-4 rounded-xl border-[green] text-[green] font-bold font-roboto">
+              <div className="border-dotted border-4 flex items-center justify-center py-4 rounded-xl border-[green] text-[green] font-bold font-noto-kufi-arabic">
                 FIT / {t("fit")}
               </div>
             </div>
