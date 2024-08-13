@@ -82,7 +82,7 @@ function UserPdf() {
   ) : (
     <div className="flex flex-col justify-center items-center py-5">
       <div className="w-screen" ref={contentToPrint}>
-        <StyledTopDiv className="flex justify-center items-center px-2 py-3 text-xl relative">
+        <StyledTopDiv className="flex justify-center items-center px-2 py-3 text-xl relative  border-b-2 border-b-[#1CD1D1]">
           <div className="absolute top-10 left-10 text-md font-roboto leftside">
             <div className="">Sultanate Of Oman</div>
             <div className="">Ministry Of Health</div>

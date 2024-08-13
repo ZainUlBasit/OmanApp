@@ -48,6 +48,10 @@ function ProtectedApp() {
   ]);
   const AdminRouter = createBrowserRouter([
     {
+      path: "/user-record/:id",
+      element: <UserPdf />,
+    },
+    {
       path: "/",
       element: <Home />,
     },
